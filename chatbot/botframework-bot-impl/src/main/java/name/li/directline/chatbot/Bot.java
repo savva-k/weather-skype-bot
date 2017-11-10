@@ -1,4 +1,4 @@
-package name.li.chatbot;
+package name.li.directline.chatbot;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
