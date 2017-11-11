@@ -12,6 +12,7 @@ public class ApiConfig {
 	public ConversationsApi conversationsApi(AuthTokenProvider tokenProvider) {
 		ConversationsApi ca = new ConversationsApi();
 		ca.getApiClient().addDefaultHeader("Authorization", "Bearer " + tokenProvider.get());
+		ca.getApiClient().setDebugging(true);
 		return ca;
 	}
 }
