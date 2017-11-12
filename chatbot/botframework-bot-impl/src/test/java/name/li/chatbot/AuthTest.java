@@ -22,12 +22,14 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.api.ConversationsApi;
 import io.swagger.client.model.Activity;
 
 @Import(FakeAuthTokenProvider.class)
+@WebAppConfiguration
 public class AuthTest extends AbstractMvcTest {
 
 	@Autowired

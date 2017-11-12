@@ -9,7 +9,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status.Family;
 
 import org.glassfish.jersey.client.JerseyClient;
-import org.glassfish.jersey.filter.LoggingFilter;
 import org.joda.time.DateTime;
 import org.joda.time.Seconds;
 
@@ -67,12 +66,12 @@ public class AuthTokenService implements AuthTokenProvider {
 	}
 
 	public void refreshToken() {
-		client.register(new LoggingFilter());
 		Response resp = client.target("https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token")
 				.request()
 				.header("Host", "login.microsoftonline.com")
 				.post(Entity.form(getTokenRequestData()));
 		if (resp.getStatusInfo().getFamily() == Family.SUCCESSFUL) {
+			@SuppressWarnings("unchecked")
 			Map<String, Object> result = resp.readEntity(Map.class);
 			String tokenValue = (String) result.get("access_token");
 			Seconds expiresIn = Seconds.seconds((Integer) result.get("expires_in"));
