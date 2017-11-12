@@ -10,12 +10,15 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 
 import io.swagger.client.ApiClient;
 import io.swagger.client.api.ConversationsApi;
 import io.swagger.client.model.Activity;
 
+@Import(FakeAuthTokenProvider.class)
 public class ReplyTest extends AbstractMvcTest {
+
 	@MockBean
 	private ConversationsApi conversationsApi;
 

@@ -1,7 +1,5 @@
 package name.li.chatbot.directline.auth;
 
-import java.util.Optional;
-
 import org.glassfish.jersey.client.JerseyClient;
 import org.glassfish.jersey.client.JerseyClientBuilder;
 import org.springframework.context.annotation.Bean;
@@ -18,15 +16,16 @@ public class AuthConfig {
 			
 			@Override
 			public String getAppId() {
-				return Optional.of(System.getenv().get("MICROSOFT-APP-ID")).get();
+				return System.getenv().get("MICROSOFT_APP_ID");
 			}
-			
+	
 			@Override
 			public String getAppPassword() {
-				return Optional.of(System.getenv().get("MICROSOFT-APP-PASSWORD")).get();
+				return System.getenv().get("MICROSOFT_APP_PASSWORD");
 			}
 		};
 	}
+
 	
 	@Bean
 	public JerseyClient tokenClient() {

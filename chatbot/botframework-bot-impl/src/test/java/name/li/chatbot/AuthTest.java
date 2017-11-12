@@ -21,29 +21,14 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Primary;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.api.ConversationsApi;
 import io.swagger.client.model.Activity;
-import name.li.chatbot.directline.auth.AuthTokenProvider;
 
-public class AuthConfig extends AbstractMvcTest {
-
-	public static final String TEST_AUTH_TOKEN = "123123123";
-
-	@Configuration
-	@Import({ App.class })
-	public static class AuthTestContext {
-		@Bean
-		@Primary
-		public AuthTokenProvider testTokenProvider() {
-			return () -> TEST_AUTH_TOKEN;
-		}
-	}
+@Import(FakeAuthTokenProvider.class)
+public class AuthTest extends AbstractMvcTest {
 
 	@Autowired
 	private ConversationsApi conversationsApi;
@@ -63,7 +48,7 @@ public class AuthConfig extends AbstractMvcTest {
 		int authorizationIndex = headerNames.indexOf("Authorization");
 		
 		assertNotEquals("Authorization header not found", authorizationIndex, -1);
-		assertEquals("Bearer " + TEST_AUTH_TOKEN, headerValueCaptor.getAllValues().get(authorizationIndex));
+		assertEquals("Bearer " + FakeAuthTokenProvider.TOKEN_VALUE, headerValueCaptor.getAllValues().get(authorizationIndex));
 	}
 
 	public Client mockHttpClient() {
