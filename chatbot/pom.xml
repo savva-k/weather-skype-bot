@@ -12,5 +12,7 @@
 	<modules>
 		<module>botframework-swagger-api</module>
 		<module>botframework-bot-impl</module>
+		<module>chatbot-war</module>
+		<module>chatbot-executable</module>
 	</modules>
 </project>

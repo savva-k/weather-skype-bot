@@ -12,7 +12,7 @@ public class FakeAuthTokenProvider {
 	public static final String TOKEN_VALUE = "Fake token value" ;
 
 	@Configuration
-	@Import({ App.class })
+	@Import({ ChatBotSpringBootApplication.class })
 	public static class AuthTestContext {
 		@Bean
 		@Primary
