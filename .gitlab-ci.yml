@@ -6,7 +6,7 @@ before_script:
 - apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
 - apt-get update -y
 - apt-get install maven -y
-- sbt sbt-version
+- mvn --version
 test:
   script:
   - cd chatbot
