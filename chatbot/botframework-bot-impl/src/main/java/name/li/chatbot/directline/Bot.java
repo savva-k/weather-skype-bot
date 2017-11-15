@@ -6,21 +6,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.client.ApiException;
 import io.swagger.client.model.Activity;
+import name.li.chatbot.directline.dsl.ActivityMatcher;
 
 @RestController
 public class Bot {
 	
-	private ReplyService replyService;
+	private ActivityMatcher activityMatcher;
 
-	public Bot(ReplyService replyService) {
-		this.replyService = replyService;
+	public Bot(ActivityMatcher activityMatcher) {
+		this.activityMatcher = activityMatcher;
 	}
 
 	@RequestMapping("/")
 	public void echo(@RequestBody Activity in) throws ApiException {
-		if (!in.getFrom().getName().equals("Bot")) {
-			replyService.reply(in, in.getText());
-		}
+		activityMatcher.apply(in);
 	}
 
 }
