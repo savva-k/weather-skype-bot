@@ -13,7 +13,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>name.li.chatbot</groupId>
-			<artifactId>skype-swagger-api</artifactId>
+			<artifactId>bot-connector-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

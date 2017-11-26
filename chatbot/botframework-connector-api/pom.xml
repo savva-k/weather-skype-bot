@@ -6,7 +6,7 @@
 		<artifactId>chatbot</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>skype-swagger-api</artifactId>
+	<artifactId>bot-connector-api</artifactId>
 
 	<properties>
 		<swaggerClientLocation>src/generated/java</swaggerClientLocation>
@@ -33,7 +33,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/src/main/resources/directline3.swagger</inputSpec>
+							<inputSpec>${project.basedir}/src/main/resources/bot-connector.swagger</inputSpec>
 							<language>java</language>
 							<library>jersey2</library>
 							<output>${swaggerClientLocation}</output>

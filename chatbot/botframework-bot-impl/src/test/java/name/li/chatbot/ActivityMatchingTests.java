@@ -68,11 +68,11 @@ public class ActivityMatchingTests {
 	}
 
 	void expectReply() throws ApiException {
-		verify(conversations, times(1)).conversationsPostActivity(Mockito.anyString(), Mockito.any(Activity.class));
+		verify(conversations, times(1)).conversationsReplyToActivity(Mockito.anyString(), Mockito.anyString(), Mockito.any(Activity.class));
 	}
 
 	void expectNoReply() throws ApiException {
-		verify(conversations, times(0)).conversationsPostActivity(Mockito.anyString(), Mockito.any(Activity.class));
+		verify(conversations, times(0)).conversationsReplyToActivity(Mockito.anyString(), Mockito.anyString(), Mockito.any(Activity.class));
 	}
 
 	public static ChannelAccount makeAccount(String id) {

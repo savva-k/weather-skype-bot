@@ -21,7 +21,7 @@ public class ReplyService {
 		ApiClient client = conversationsApi.getApiClient();
 		client.setBasePath(in.getServiceUrl());
 		try {
-			conversationsApi.conversationsPostActivity(in.getConversation().getId(), createReply(in, text));
+			conversationsApi.conversationsReplyToActivity(in.getConversation().getId(), in.getId(), createReply(in, text));
 		} catch (ApiException e) {
 			throw new RuntimeException(e);
 		}

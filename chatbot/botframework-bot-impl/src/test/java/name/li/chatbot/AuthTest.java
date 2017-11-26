@@ -39,7 +39,7 @@ public class AuthTest extends AbstractMvcTest {
 	public void conversationsApiRequestsShouldContainAuthorizationHeader() throws ApiException {
 		Client clientMock = mockHttpClient();
 		conversationsApi.getApiClient().setHttpClient(clientMock);
-		conversationsApi.conversationsPostActivity("asd", new Activity());
+		conversationsApi.conversationsReplyToActivity("asd", "qwe", new Activity());
 		Builder builder = clientMock.target("").request();
 
 		ArgumentCaptor<String> headerNameCaptor = ArgumentCaptor.forClass(String.class);
