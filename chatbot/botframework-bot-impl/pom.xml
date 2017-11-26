@@ -13,7 +13,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>name.li.chatbot</groupId>
-			<artifactId>bot-connector-api</artifactId>
+			<artifactId>botframework-connector-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

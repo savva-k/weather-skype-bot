@@ -6,7 +6,7 @@
 		<artifactId>chatbot</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>bot-connector-api</artifactId>
+	<artifactId>botframework-connector-api</artifactId>
 
 	<properties>
 		<swaggerClientLocation>src/generated/java</swaggerClientLocation>
