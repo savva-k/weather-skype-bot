@@ -39,6 +39,17 @@ public class ActivityMatcher {
 		public static Predicate<Activity> isOwnMessage() {
 			return activity -> Objects.equals(activity.getFrom(), activity.getRecipient());
 		}
+
+		public static Predicate<Activity> isGreeting() {
+			return activity -> activity.getText() != null
+					&& activity.getText().toLowerCase().startsWith("hello")
+					|| activity.getText().toLowerCase().startsWith("hi");
+		}
+
+		public static Predicate<Activity> isHelpRequest() {
+			return activity -> activity.getText() != null
+					&& activity.getText().toLowerCase().contains("help");
+		}
 	}
 	
 	private ImmutableCollection<Rule> rules;
