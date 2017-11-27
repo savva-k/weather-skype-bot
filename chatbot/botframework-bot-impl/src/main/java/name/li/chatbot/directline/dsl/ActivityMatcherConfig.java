@@ -21,4 +21,8 @@ public class ActivityMatcherConfig {
 				.build());
 	}
 
+	@Bean
+	public WeatherService weatherService() {
+		return new WeatherService();
+	}
 }

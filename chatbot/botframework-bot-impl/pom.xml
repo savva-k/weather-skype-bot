@@ -39,6 +39,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.imsavva</groupId>
+			<artifactId>weather-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
 			<!-- Import dependency management from Spring Boot -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

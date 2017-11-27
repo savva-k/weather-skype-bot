@@ -14,5 +14,6 @@
 		<module>botframework-bot-impl</module>
 		<module>chatbot-war</module>
 		<module>chatbot-executable</module>
-	</modules>
+        <module>weather-client</module>
+    </modules>
 </project>
