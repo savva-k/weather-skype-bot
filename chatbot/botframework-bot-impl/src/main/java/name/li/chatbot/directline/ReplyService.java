@@ -32,7 +32,7 @@ public class ReplyService {
 				.timestamp(DateTime.now())
 				.type("message")
 				.channelId(in.getChannelId())
-				.text(in.getText())
+				.text(text)
 				.from(in.getRecipient())
 				.recipient(in.getFrom())
 				.replyToId(in.getId())
