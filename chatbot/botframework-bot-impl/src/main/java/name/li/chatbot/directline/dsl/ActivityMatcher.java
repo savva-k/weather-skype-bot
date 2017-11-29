@@ -50,6 +50,11 @@ public class ActivityMatcher {
 			return activity -> activity.getText() != null
 					&& activity.getText().toLowerCase().contains("help");
 		}
+
+		public static Predicate<Activity> isTodayWeatherRequest() {
+			return activity -> activity.getText() != null
+					&& activity.getText().toLowerCase().startsWith("weather today");
+		}
 	}
 	
 	private ImmutableCollection<Rule> rules;
