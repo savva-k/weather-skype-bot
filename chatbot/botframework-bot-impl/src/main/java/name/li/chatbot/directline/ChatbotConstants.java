@@ -8,4 +8,7 @@ public class ChatbotConstants {
             "weather period location, e.g. weather today Ryazan";
 
     public static final String GREETINGS_MESSAGE = "Hi, this is Vasyatka bot. Type **help** for more information.";
+
+    public static final String DEFAULT_WEATHER_FORECAST = "It's overcast right now, but the forecast says " +
+            "it should clear up by this afternoon";
 }
