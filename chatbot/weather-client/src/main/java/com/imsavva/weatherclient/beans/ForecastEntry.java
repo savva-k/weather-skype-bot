@@ -83,4 +83,12 @@ public class ForecastEntry {
     public void setPressureNight(int pressureNight) {
         this.pressureNight = pressureNight;
     }
+
+    @Override
+    public String toString() {
+        return "ForecastEntry{" + "date=" + date + ", tempDay=" + tempDay + ", tempNight=" + tempNight
+                + ", windDirection=" + windDirection + ", windSpeed=" + windSpeed
+                + ", precipitationProbability=" + precipitationProbability + ", pressureDay=" + pressureDay
+                + ", pressureNight=" + pressureNight + '}';
+    }
 }

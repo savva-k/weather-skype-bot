@@ -24,4 +24,17 @@ public class DailyForecast {
         this.detail = detail;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Daily forecast from different services:\n");
+
+        for (Map.Entry<String, ForecastEntry> e : getDetail().entrySet()) {
+            builder.append(e.getKey());
+            builder.append(": ");
+            builder.append(e.getValue().toString());
+        }
+
+        return builder.toString();
+    }
 }

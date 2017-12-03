@@ -6,6 +6,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.MessageFormat;
+import java.util.logging.Logger;
 
 /**
  * @author Savva Kodeikin
@@ -22,6 +23,8 @@ public class WeatherService {
     private static final String DEFAULT_LOCATION = "Ryazan";
     private static final String TODAY = "today";
 
+    private static final Logger logger = Logger.getLogger(WeatherService.class.getName());
+
     private RestTemplate restTemplate;
 
     public WeatherService(RestTemplate restTemplate) {
@@ -29,6 +32,7 @@ public class WeatherService {
     }
 
     public DailyForecast getDailyForecast(String location) throws WeatherServiceException {
+        logger.info("Asking a weather service to get a daily forecast in " + location);
         if (location == null) {
             location = DEFAULT_LOCATION;
         }
@@ -41,6 +45,7 @@ public class WeatherService {
             throw new WeatherServiceException("Unable to get data from the service", e);
         }
 
+        logger.info("Got forecast: " + forecast);
         return forecast;
     }
 }
