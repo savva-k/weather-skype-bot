@@ -17,7 +17,7 @@ public class MessageHandler {
     private static final String CURRENT_DATE_FORMAT = "dd.MM.yyyy";
     private static final String DEFAULT_LOCATION = "Ryazan";
 
-    private static final String DEGREES_CELSIUS = "°C";
+    private static final String DEGREES_CELSIUS = "ºC";
     private static final String MMHG = "mmHg";
     private static final String PERCENT = "%";
 
