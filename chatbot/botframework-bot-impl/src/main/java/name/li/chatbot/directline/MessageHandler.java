@@ -2,10 +2,12 @@ package name.li.chatbot.directline;
 
 import com.imsavva.weatherclient.beans.DailyForecast;
 import com.imsavva.weatherclient.beans.ForecastEntry;
+import com.imsavva.weatherclient.beans.WeeklyForecast;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,7 +19,7 @@ public class MessageHandler {
     private static final String CURRENT_DATE_FORMAT = "dd.MM.yyyy";
     private static final String DEFAULT_LOCATION = "Ryazan";
 
-    private static final String DEGREES_CELSIUS = "ºC";
+    private static final String DEGREES_CELSIUS = "C";
     private static final String MMHG = "mmHg";
     private static final String PERCENT = "%";
 
@@ -66,13 +68,39 @@ public class MessageHandler {
         return builder.toString();
     }
 
+    public String createWeeklyForecastMessage(String location, WeeklyForecast forecast) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Weekly weather forecast for ")
+                .append(location)
+                .append(" from ")
+                .append(forecast.getDetail().size())
+                .append(" suppliers:")
+                .append(NEW_LINE)
+                .append(NEW_LINE);
+
+        for (Map.Entry<String, List<ForecastEntry>> entry : forecast.getDetail().entrySet()) {
+            for (ForecastEntry forecastEntry : entry.getValue()) {
+                builder.append(handleForecastSupplier(entry.getKey(), forecastEntry));
+            }
+        }
+
+        return builder.toString();
+    }
+
+    public String removeSubstring(String message, String substring) {
+        if (message == null) {
+            return  null;
+        }
+        return message.replace(substring, "").trim();
+    }
+
     private String handleForecastSupplier(String supplier, ForecastEntry forecastEntry) {
         StringBuilder builder = new StringBuilder();
         builder.append(BOLD_TEXT)
-                .append("Forecast from")
+                .append("Forecast from ")
                 .append(supplier)
                 .append(" on ")
-                .append(getCurrentDate())
+                .append(formatDate(forecastEntry.getDate()))
                 .append(BOLD_TEXT)
                 .append(NEW_LINE)
 
@@ -115,19 +143,13 @@ public class MessageHandler {
                 .append(forecastEntry.getPrecipitationProbability())
                 .append(PERCENT)
                 .append(NEW_LINE)
-                .append(HORIZONTAL_RUZE);
+                .append(HORIZONTAL_RUZE)
+                .append(NEW_LINE);
 
         return builder.toString();
     }
 
-    public String removeSubstring(String message, String substring) {
-        if (message == null) {
-            return  null;
-        }
-        return message.replace(substring, "").trim();
-    }
-
-    private String getCurrentDate() {
-        return new SimpleDateFormat(CURRENT_DATE_FORMAT).format(new Date());
+    private String formatDate(Date date) {
+        return new SimpleDateFormat(CURRENT_DATE_FORMAT).format(date);
     }
 }
