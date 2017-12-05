@@ -5,6 +5,7 @@ import com.imsavva.weatherclient.WeatherServiceException;
 import com.imsavva.weatherclient.beans.DailyForecast;
 import name.li.chatbot.directline.ChatbotConstants;
 import name.li.chatbot.directline.MessageHandler;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,7 @@ public class ActivityMatcherConfig {
 
 	@Bean
 	public ActivityMatcher activityMatcher(ReplyService replyService, WeatherService weatherService,
-										   MessageHandler messageHandler) {
+										   MessageHandler messageHandler, String botName) {
 
 		return new ActivityMatcher(
 				new ImmutableList.Builder<ActivityMatcher.Rule>()
@@ -37,7 +38,8 @@ public class ActivityMatcherConfig {
 						ActivityMatcher.Predicates.isMessage().and(ActivityMatcher.Predicates.isOwnMessage().negate())
 						.and(ActivityMatcher.Predicates.isTodayWeatherRequest()),
 						a -> {
-							String location = messageHandler.extractLocation(a.getText());
+							String incomingMessage = messageHandler.removeSubstring(a.getText(), botName);
+							String location = messageHandler.extractLocation(incomingMessage);
 							String message;
 
 							try {
@@ -66,6 +68,11 @@ public class ActivityMatcherConfig {
 	@Bean
 	public MessageHandler messageHandler() {
 		return new MessageHandler();
+	}
+
+	@Bean
+	public String botName() {
+		return System.getenv().get("BOT_NAME");
 	}
 
 }

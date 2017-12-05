@@ -42,8 +42,8 @@ public class ActivityMatcher {
 
 		public static Predicate<Activity> isGreeting() {
 			return activity -> activity.getText() != null
-					&& activity.getText().toLowerCase().startsWith("hello")
-					|| activity.getText().toLowerCase().startsWith("hi");
+					&& activity.getText().toLowerCase().contains("hello")
+					|| activity.getText().toLowerCase().contains("hi");
 		}
 
 		public static Predicate<Activity> isHelpRequest() {
@@ -53,7 +53,7 @@ public class ActivityMatcher {
 
 		public static Predicate<Activity> isTodayWeatherRequest() {
 			return activity -> activity.getText() != null
-					&& activity.getText().toLowerCase().startsWith("weather today");
+					&& activity.getText().toLowerCase().contains("weather today");
 		}
 	}
 	

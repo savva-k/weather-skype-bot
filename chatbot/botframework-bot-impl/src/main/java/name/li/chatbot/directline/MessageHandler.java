@@ -120,6 +120,13 @@ public class MessageHandler {
         return builder.toString();
     }
 
+    public String removeSubstring(String message, String substring) {
+        if (message == null) {
+            return  null;
+        }
+        return message.replace(substring, "").trim();
+    }
+
     private String getCurrentDate() {
         return new SimpleDateFormat(CURRENT_DATE_FORMAT).format(new Date());
     }
