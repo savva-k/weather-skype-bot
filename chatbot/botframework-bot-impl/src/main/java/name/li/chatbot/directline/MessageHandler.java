@@ -54,7 +54,7 @@ public class MessageHandler {
     public String createDailyForecastMessage(String location, DailyForecast forecast) {
         StringBuilder builder = new StringBuilder();
         builder.append("Got forecasts for ")
-                .append(location)
+                .append(capitalizeFirstLetter(location))
                 .append(" from ")
                 .append(forecast.getDetail().size())
                 .append(" suppliers:")
@@ -71,7 +71,7 @@ public class MessageHandler {
     public String createWeeklyForecastMessage(String location, WeeklyForecast forecast) {
         StringBuilder builder = new StringBuilder();
         builder.append("Weekly weather forecast for ")
-                .append(location)
+                .append(capitalizeFirstLetter(location))
                 .append(" from ")
                 .append(forecast.getDetail().size())
                 .append(" suppliers:")
@@ -151,5 +151,9 @@ public class MessageHandler {
 
     private String formatDate(Date date) {
         return new SimpleDateFormat(CURRENT_DATE_FORMAT).format(date);
+    }
+
+    private String capitalizeFirstLetter(String input) {
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
 }
