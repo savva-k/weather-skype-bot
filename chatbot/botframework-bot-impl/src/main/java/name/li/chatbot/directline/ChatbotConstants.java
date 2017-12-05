@@ -5,7 +5,7 @@ package name.li.chatbot.directline;
  */
 public class ChatbotConstants {
     public static final String HELP_MESSAGE = "The commands that the bot understands:\n\nhello\n\nhelp\n\n" +
-            "weather period location, e.g. weather today Ryazan";
+            "weather period location, e.g. weather today Ryazan or weather week Moskva";
 
     public static final String GREETINGS_MESSAGE = "Hi, this is Vasyatka bot. Type **help** for more information.";
 
