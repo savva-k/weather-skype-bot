@@ -94,7 +94,7 @@ public class MessageHandler {
         return message.replace(substring, "").trim();
     }
 
-    private String handleForecastSupplier(String supplier, ForecastEntry forecastEntry) {
+    public String handleForecastSupplier(String supplier, ForecastEntry forecastEntry) {
         StringBuilder builder = new StringBuilder();
         builder.append(BOLD_TEXT)
                 .append("Forecast from ")

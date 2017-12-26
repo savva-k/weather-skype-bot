@@ -60,6 +60,10 @@ public class ActivityMatcher {
 			return activity -> activity.getText() != null
 					&& activity.getText().toLowerCase().contains("weather week");
 		}
+		public static Predicate<Activity> isTestCommand() {
+			return activity -> activity.getText() != null
+					&& activity.getText().toLowerCase().startsWith("test card");
+		}
 	}
 	
 	private ImmutableCollection<Rule> rules;
